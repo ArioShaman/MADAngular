@@ -6,9 +6,12 @@
 = require oxymoron/angular-ui-router
 = require oxymoron/ng-notify
 = require oxymoron
-= require echarts.min
 = require_self
 = require_tree ./controllers
+= require ammap
+= require worldLow
+= require jquery3
+= require jquery_ujs
 */
 var app = angular.module('app', ['ui.router','oxymoron']);
 

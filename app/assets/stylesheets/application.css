@@ -13,4 +13,5 @@
  *= require_tree .
  *= require_self
  *= require oxymoron/ng-notify
+ *= require ammap.css
  */

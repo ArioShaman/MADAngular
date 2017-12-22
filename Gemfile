@@ -56,3 +56,4 @@ gem 'pg'
 gem "slim-rails"
 gem 'angularjs-rails'
 gem 'oxymoron'
+gem 'jquery-rails'

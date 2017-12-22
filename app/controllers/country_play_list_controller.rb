@@ -4,7 +4,7 @@ class CountryPlayListController < ApplicationController
   # GET /countries
   # GET /countries.json
   def index
-    @countries = CountryPlayList.all
+    @playlists = CountryPlayList.all
   end
 
   def show
