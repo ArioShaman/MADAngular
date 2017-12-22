@@ -1,0 +1,2 @@
+class CountryPlayList < ApplicationRecord
+end

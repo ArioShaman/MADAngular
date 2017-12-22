@@ -6,6 +6,7 @@
 = require oxymoron/angular-ui-router
 = require oxymoron/ng-notify
 = require oxymoron
+= require echarts.min
 = require_self
 = require_tree ./controllers
 */
