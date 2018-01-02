@@ -4,7 +4,7 @@ app.controller 'CountriesCtrl', [
 
     ctrl = this
     action 'index', () ->
-      ctrl.playlist = Country.query()
-
+      # ctrl.playlist = Country.query()
+      # console.log ctrl.playlist
     return
 ]

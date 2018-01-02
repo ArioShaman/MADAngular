@@ -4,6 +4,8 @@ app.controller 'CountryPlayListCtrl', [
 
     ctrl = this
     action 'index', () ->
+      ctrl.playlist = CountryPlayList.query()
+      console.log ctrl.playlist
 
       data = {
         "type": "map",
