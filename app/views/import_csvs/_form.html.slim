@@ -1,6 +1,7 @@
 .import_csv
-  form ng-app="fileUpload" name="form" 
-    label import CSV
-    button ngf-select="" ng-model="file" name="file" Select
+  form ng-app="fileUpload" name="form" validcsv=""
+    .form-group 
+      label ng-show="file" Downloaded {{file.name}}
+      button ngf-select="" ng-model="file" name="file" validcsv="" Select
 
-    button type="submit" ng-click="submit()" Submit
+      button type="submit" ng-click="submit()" Submit
