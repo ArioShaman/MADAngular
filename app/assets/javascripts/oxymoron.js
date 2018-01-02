@@ -132,74 +132,6 @@ angular.module("oxymoron.config.states", [])
           }
         })
       
-        .state('countries_path', {
-          url: '/countries',
-          
-          templateUrl: function(params) {
-            params['ng-view']='';
-            
-            
-            return Routes['countries_path'](params);
-          },
-          controller: 'CountriesCtrl as ctrl',
-          resolve: {
-            action: ['$stateParams', function ($stateParams) {
-              return resolve('index', $stateParams)
-            }]
-          }
-        })
-      
-        .state('new_country_path', {
-          url: '/countries/new',
-          
-          templateUrl: function(params) {
-            params['ng-view']='';
-            
-            
-            return Routes['new_country_path'](params);
-          },
-          controller: 'CountriesCtrl as ctrl',
-          resolve: {
-            action: ['$stateParams', function ($stateParams) {
-              return resolve('new', $stateParams)
-            }]
-          }
-        })
-      
-        .state('edit_country_path', {
-          url: '/countries/:id/edit',
-          
-          templateUrl: function(params) {
-            params['ng-view']='';
-            
-            
-            return Routes['edit_country_path'](params);
-          },
-          controller: 'CountriesCtrl as ctrl',
-          resolve: {
-            action: ['$stateParams', function ($stateParams) {
-              return resolve('edit', $stateParams)
-            }]
-          }
-        })
-      
-        .state('country_path', {
-          url: '/countries/:id',
-          
-          templateUrl: function(params) {
-            params['ng-view']='';
-            
-            
-            return Routes['country_path'](params);
-          },
-          controller: 'CountriesCtrl as ctrl',
-          resolve: {
-            action: ['$stateParams', function ($stateParams) {
-              return resolve('show', $stateParams)
-            }]
-          }
-        })
-      
         .state('country_play_list_index_path', {
           url: '/country_play_list',
           
@@ -213,40 +145,6 @@ angular.module("oxymoron.config.states", [])
           resolve: {
             action: ['$stateParams', function ($stateParams) {
               return resolve('index', $stateParams)
-            }]
-          }
-        })
-      
-        .state('new_country_play_list_path', {
-          url: '/country_play_list/new',
-          
-          templateUrl: function(params) {
-            params['ng-view']='';
-            
-            
-            return Routes['new_country_play_list_path'](params);
-          },
-          controller: 'CountryPlayListCtrl as ctrl',
-          resolve: {
-            action: ['$stateParams', function ($stateParams) {
-              return resolve('new', $stateParams)
-            }]
-          }
-        })
-      
-        .state('edit_country_play_list_path', {
-          url: '/country_play_list/:id/edit',
-          
-          templateUrl: function(params) {
-            params['ng-view']='';
-            
-            
-            return Routes['edit_country_play_list_path'](params);
-          },
-          controller: 'CountryPlayListCtrl as ctrl',
-          resolve: {
-            action: ['$stateParams', function ($stateParams) {
-              return resolve('edit', $stateParams)
             }]
           }
         })
@@ -331,28 +229,6 @@ angular.module("oxymoron.services.resources", [])
   }])
 
   
-    .factory('Country', ['$resource', 'resourceDecorator', function ($resource, resourceDecorator) {
-      return resourceDecorator($resource('/countries/:id.json', {"id":"@id"}, {
-        "new": {
-          "method": "GET",
-          "url": "/countries/:id/new.json"
-        },
-        "edit": {
-          "method": "GET",
-          "url": "/countries/:id/edit.json"
-        },
-        "update": {
-          "method": "PUT"
-        },
-        "create": {
-          "method": "POST"
-        },
-        "destroy": {
-          "method": "DELETE"
-        }
-      }));
-    }])
-  
     .factory('CountryPlayList', ['$resource', 'resourceDecorator', function ($resource, resourceDecorator) {
       return resourceDecorator($resource('/country_play_list/:id.json', {"id":"@id"}, {
         "new": {
@@ -371,6 +247,11 @@ angular.module("oxymoron.services.resources", [])
         },
         "destroy": {
           "method": "DELETE"
+        },
+        "import": {
+          "url": "/country_play_list/import.json",
+          "isArray": null,
+          "method": "POST"
         }
       }));
     }])
@@ -648,7 +529,7 @@ angular.module("oxymoron.directives", ['oxymoron.directives.fileupload', 'oxymor
 (function () {
   var Routes = function () {
     var self = this,
-        routes = {"rails_info_properties":{"defaults":{},"path":"/rails/info/properties"},"rails_info_routes":{"defaults":{},"path":"/rails/info/routes"},"rails_info":{"defaults":{},"path":"/rails/info"},"rails_mailers":{"defaults":{},"path":"/rails/mailers"},"root":{"defaults":{},"path":"/"},"countries":{"defaults":{},"path":"/countries"},"new_country":{"defaults":{},"path":"/countries/new"},"edit_country":{"defaults":{},"path":"/countries/:id/edit"},"country":{"defaults":{},"path":"/countries/:id"},"country_play_list_index":{"defaults":{},"path":"/country_play_list"},"new_country_play_list":{"defaults":{},"path":"/country_play_list/new"},"edit_country_play_list":{"defaults":{},"path":"/country_play_list/:id/edit"},"country_play_list":{"defaults":{},"path":"/country_play_list/:id"}};
+        routes = {"rails_info_properties":{"defaults":{},"path":"/rails/info/properties"},"rails_info_routes":{"defaults":{},"path":"/rails/info/routes"},"rails_info":{"defaults":{},"path":"/rails/info"},"rails_mailers":{"defaults":{},"path":"/rails/mailers"},"root":{"defaults":{},"path":"/"},"import_country_play_list_index":{"defaults":{},"path":"/country_play_list/import"},"country_play_list_index":{"defaults":{},"path":"/country_play_list"},"country_play_list":{"defaults":{},"path":"/country_play_list/:id"}};
 
     self.defaultParams = {}
 

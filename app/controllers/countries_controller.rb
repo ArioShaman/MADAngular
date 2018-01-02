@@ -5,7 +5,6 @@ class CountriesController < ApplicationController
   # GET /countries.json
   def index
     @countries = Country.all
-    return @countries
   end
 
   def show

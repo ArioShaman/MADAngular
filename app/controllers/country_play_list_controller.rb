@@ -10,6 +10,10 @@ class CountryPlayListController < ApplicationController
   def show
   end
 
+  def import
+    puts "import"
+    head :no_content
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

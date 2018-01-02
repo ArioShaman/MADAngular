@@ -1,6 +1,6 @@
 app.controller 'CountryPlayListCtrl', [
-  '$scope', 'CountryPlayList', 'action' 
-  ($scope, CountryPlayList, action) -> 
+  '$scope', '$rootScope', 'CountryPlayList', 'action' 
+  ($scope, $rootScope, CountryPlayList,  action) -> 
 
     ctrl = this
     action 'index', () ->
@@ -36,6 +36,9 @@ app.controller 'CountryPlayListCtrl', [
 
       map = AmCharts.makeChart("map", data)
       ctrl.playlist = CountryPlayList.query()
+
+      $scope.sendForm = (param)->
+        console.log param
 
     return
 ]
