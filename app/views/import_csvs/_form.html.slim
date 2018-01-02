@@ -1,0 +1,9 @@
+.import_csv
+  / form novalidate="" name="form" ng-submit="uploadCSV(ctrl.fileUploader)" 
+    /input type="file" model="ctrl.csvFile"
+    label UploadCSV
+    button ngf-select="" ng-model="ctrl.fileUploader.file" ngf-multiple="false" Download
+  
+    button type="submit" ng-disabled="form.$invalid" Сохранить
+
+  button ngf-select="upload($file)" Upload on file

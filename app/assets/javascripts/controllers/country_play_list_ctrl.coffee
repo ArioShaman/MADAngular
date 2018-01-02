@@ -1,12 +1,13 @@
 app.controller 'CountryPlayListCtrl', [
-  '$scope', '$rootScope', 'CountryPlayList', 'action' 
-  ($scope, $rootScope, CountryPlayList,  action) -> 
+  '$scope', '$rootScope', 'CountryPlayList', 'action' , 'ImportCsv','Upload'
+  ($scope, $rootScope, CountryPlayList, action, ImportCsv, Upload) -> 
 
     ctrl = this
+    ctrl.fileUploader = {}
+
     action 'index', () ->
       ctrl.playlist = CountryPlayList.query()
       console.log ctrl.playlist
-
       data = {
         "type": "map",
         "theme":"black",
@@ -37,8 +38,18 @@ app.controller 'CountryPlayListCtrl', [
       map = AmCharts.makeChart("map", data)
       ctrl.playlist = CountryPlayList.query()
 
-      $scope.sendForm = (param)->
-        console.log param
+      $scope.uploadCSV = (form)->
+        data = _.compactObject form
+        console.log data
+        ImportCsv.import {data: data}, (res)->
+          console.log res
 
+      $scope.upload = (file) ->
+        if file
+          Upload.upload(
+            url: Routes.import_import_csvs_path()
+            data: {file: file}
+          ).then (res)->
+            console.log res
     return
 ]

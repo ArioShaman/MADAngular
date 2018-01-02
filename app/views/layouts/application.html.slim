@@ -3,7 +3,7 @@ html ng-app="app"
     title MAD
     base href="/"
     = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
   body
     ui-view
-    = javascript_include_tag 'application'
-    /== yield
+      /= yield

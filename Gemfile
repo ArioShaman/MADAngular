@@ -33,6 +33,20 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-angular',             '~> 1.5.8'
+  gem 'rails-assets-underscore',          '~> 1.8'
+  gem 'rails-assets-angular-locale-ru',   '~> 1.3'
+  gem 'rails-assets-momentjs',            '~> 2.18'
+  gem 'rails-assets-angular-ellipsis',    '~> 0.1'
+  gem 'rails-assets-select2',             '~> 4.0.3'
+  gem 'rails-assets-angular-truncate-2',  '~> 0.4'
+  gem 'rails-assets-angularjs-toaster',   '~> 2.1'
+  gem 'rails-assets-ngDialog',            '~> 1.3'
+  gem 'rails-assets-ng-file-upload',      '~> 12.2'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -60,3 +74,4 @@ gem "slim-rails"
 gem 'angularjs-rails'
 gem 'oxymoron'
 gem 'jquery-rails'
+gem 'carrierwave', '~> 1.0'

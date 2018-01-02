@@ -1,0 +1,19 @@
+h1 Listing import_csvs
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @import_csvs.each do |import_csv|
+      tr
+        td = link_to 'Show', import_csv
+        td = link_to 'Edit', edit_import_csv_path(import_csv)
+        td = link_to 'Destroy', import_csv, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Import csv', new_import_csv_path

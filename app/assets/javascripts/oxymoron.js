@@ -166,6 +166,74 @@ angular.module("oxymoron.config.states", [])
           }
         })
       
+        .state('import_csvs_path', {
+          url: '/import_csvs',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['import_csvs_path'](params);
+          },
+          controller: 'ImportCsvsCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('index', $stateParams)
+            }]
+          }
+        })
+      
+        .state('new_import_csv_path', {
+          url: '/import_csvs/new',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['new_import_csv_path'](params);
+          },
+          controller: 'ImportCsvsCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('new', $stateParams)
+            }]
+          }
+        })
+      
+        .state('edit_import_csv_path', {
+          url: '/import_csvs/:id/edit',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['edit_import_csv_path'](params);
+          },
+          controller: 'ImportCsvsCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('edit', $stateParams)
+            }]
+          }
+        })
+      
+        .state('import_csv_path', {
+          url: '/import_csvs/:id',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['import_csv_path'](params);
+          },
+          controller: 'ImportCsvsCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('show', $stateParams)
+            }]
+          }
+        })
+      
       return $stateProvider;
     }
   }])
@@ -247,9 +315,31 @@ angular.module("oxymoron.services.resources", [])
         },
         "destroy": {
           "method": "DELETE"
+        }
+      }));
+    }])
+  
+    .factory('ImportCsv', ['$resource', 'resourceDecorator', function ($resource, resourceDecorator) {
+      return resourceDecorator($resource('/import_csvs/:id.json', {"id":"@id"}, {
+        "new": {
+          "method": "GET",
+          "url": "/import_csvs/:id/new.json"
+        },
+        "edit": {
+          "method": "GET",
+          "url": "/import_csvs/:id/edit.json"
+        },
+        "update": {
+          "method": "PUT"
+        },
+        "create": {
+          "method": "POST"
+        },
+        "destroy": {
+          "method": "DELETE"
         },
         "import": {
-          "url": "/country_play_list/import.json",
+          "url": "/import_csvs/import.json",
           "isArray": null,
           "method": "POST"
         }
@@ -529,7 +619,7 @@ angular.module("oxymoron.directives", ['oxymoron.directives.fileupload', 'oxymor
 (function () {
   var Routes = function () {
     var self = this,
-        routes = {"rails_info_properties":{"defaults":{},"path":"/rails/info/properties"},"rails_info_routes":{"defaults":{},"path":"/rails/info/routes"},"rails_info":{"defaults":{},"path":"/rails/info"},"rails_mailers":{"defaults":{},"path":"/rails/mailers"},"root":{"defaults":{},"path":"/"},"import_country_play_list_index":{"defaults":{},"path":"/country_play_list/import"},"country_play_list_index":{"defaults":{},"path":"/country_play_list"},"country_play_list":{"defaults":{},"path":"/country_play_list/:id"}};
+        routes = {"rails_info_properties":{"defaults":{},"path":"/rails/info/properties"},"rails_info_routes":{"defaults":{},"path":"/rails/info/routes"},"rails_info":{"defaults":{},"path":"/rails/info"},"rails_mailers":{"defaults":{},"path":"/rails/mailers"},"root":{"defaults":{},"path":"/"},"country_play_list_index":{"defaults":{},"path":"/country_play_list"},"country_play_list":{"defaults":{},"path":"/country_play_list/:id"},"import_import_csvs":{"defaults":{},"path":"/import_csvs/import"},"import_csvs":{"defaults":{},"path":"/import_csvs"},"new_import_csv":{"defaults":{},"path":"/import_csvs/new"},"edit_import_csv":{"defaults":{},"path":"/import_csvs/:id/edit"},"import_csv":{"defaults":{},"path":"/import_csvs/:id"}};
 
     self.defaultParams = {}
 

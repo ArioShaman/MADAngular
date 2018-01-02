@@ -12,8 +12,13 @@
 = require worldLow
 = require jquery3
 = require jquery_ujs
+= require ng-file-upload
+= require angularjs-toaster
+= require ngDialog
+= require angular-truncate-2
+= require_tree ./configs
 */
-var app = angular.module('app', ['ui.router','oxymoron']);
+var app = angular.module('app', ['ui.router','oxymoron', 'ngDialog', 'ngFileUpload']);
 
 app.config(['$stateProvider', function ($stateProvider) {
   $stateProvider.rails()
