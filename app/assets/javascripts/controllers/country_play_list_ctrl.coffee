@@ -38,11 +38,9 @@ app.controller 'CountryPlayListCtrl', [
       map = AmCharts.makeChart("map", data)
       ctrl.playlist = CountryPlayList.query()
 
-      $scope.uploadCSV = (form)->
-        data = _.compactObject form
-        console.log data
-        ImportCsv.import {data: data}, (res)->
-          console.log res
+      $scope.submit = ()->
+        if ($scope.form.file.$valid && $scope.file) 
+          $scope.upload($scope.file);
 
       $scope.upload = (file) ->
         if file
