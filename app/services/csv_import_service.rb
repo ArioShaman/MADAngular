@@ -7,22 +7,29 @@ class CsvImportService
 
   def upload
     playlist = humanize_csv @csv_path 
-    puts "#{Country.first()}"
+    
+    playlist.each do |k, v|
+      country = Country.get(k)
+      country = country ? country : Country.create(name: k)
 
-    # csv_text = File.read(csv.csv.path)
-    # csv = CSV.parse(csv_text, :headers => true)
-    # csv.each do |row|
-    #   track = Track.get(row[1], row[0])
-    #   if !track 
-    #     author = Author.get(row[0])
-    #     author = author ? author : Author.create(name: row[0])
-    #     track = Track.create(name: row[1], cover: row[2],
-    #       link: row[3], author: author) 
-    #   end
-    #   country = Country.get(row[4])
-    #   country = country ? country : Country.create(name: row[4]) 
-    #   playlist = CountryPlayList.get()
-    # end    
+      country_list = v
+      country_list.each do |year, list|
+        country_play_list = CountryPlayList.get(country, year)
+        if country_play_list != nil and not country_list.empty?
+          country_play_list.destroy_all
+        end
+        list.each do |el|
+          track = Track.get(el[1], el[0])
+          if !track 
+            author = Author.get(el[0])
+            author = author ? author : Author.create(name: el[0])
+            track = Track.create(name: el[1], cover: el[2],
+              link: el[3], author: author) 
+          end
+          CountryPlayList.create(track: track, country: country, year: year)   
+        end
+      end
+    end  
   end
 
   private

@@ -48,6 +48,6 @@ app.controller 'CountryPlayListCtrl', [
             url: Routes.import_import_csvs_path()
             data: {file: file}
           ).then (res)->
-            console.log res
+            #console.log res
     return
 ]
