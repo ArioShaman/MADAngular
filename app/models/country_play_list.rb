@@ -6,4 +6,13 @@ class CountryPlayList < ApplicationRecord
 
   scope :year, -> (year) { where(year: year) }
   default_scope { order(score: :desc) }
+
+
+  def self.get(track, country, year)
+    if country.present? && year.present?
+      where(country: country, year: year)
+    else
+      nil
+    end    
+  end 
 end
