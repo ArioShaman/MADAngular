@@ -7,7 +7,6 @@ app.controller 'CountryPlayListCtrl', [
 
     action 'index', () ->
       ctrl.playlist = CountryPlayList.query()
-      console.log ctrl.playlist
       data = {
         "type": "map",
         "theme":"black",
@@ -37,6 +36,7 @@ app.controller 'CountryPlayListCtrl', [
 
       map = AmCharts.makeChart("map", data)
       ctrl.playlist = CountryPlayList.query()
+
 
       $scope.submit = ()->
         if ($scope.form.file.$valid && $scope.file) 
