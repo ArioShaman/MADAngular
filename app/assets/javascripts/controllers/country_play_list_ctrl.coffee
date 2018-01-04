@@ -30,7 +30,7 @@ app.controller 'CountryPlayListCtrl', [
 
             #Возвращает массив записей по полю Страна, год 
             ctrl.playlist = CountryPlayList.query({country: event.mapObject.title, year: $scope.year})
-            console.log ctrl.playlist            
+            #console.log ctrl.playlist            
             $scope.$apply () ->
               $scope.selectCont = event.mapObject.title
               $scope.selectIs = true

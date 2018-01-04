@@ -1,5 +1,9 @@
-.country_play_list
+.country-play-list
   .sidebar
+    .cover
+    .play-list 
+      div ng-repeat="el in ctrl.playlist"
+        .track ng-bind="el.track.author"
     div
       /форма загрузки csv, кстати коменты в html не отрендарятся
       /=render "import_csvs/form"

@@ -6,11 +6,6 @@ class CountryPlayListController < ApplicationController
       year: params[:year])
   end
 
-  def import
-    puts "import"
-    head :no_content
-  end
-
   private
     def set_country_playlist
       @playlists = CountryPlayList.where(country: Country.get(params[:country]),
