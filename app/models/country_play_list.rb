@@ -8,7 +8,7 @@ class CountryPlayList < ApplicationRecord
   default_scope { order(score: :desc) }
 
 
-  def self.get(track, country, year)
+  def self.get(country, year)
     if country.present? && year.present?
       where(country: country, year: year)
     else

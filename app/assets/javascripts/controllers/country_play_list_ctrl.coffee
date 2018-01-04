@@ -6,7 +6,6 @@ app.controller 'CountryPlayListCtrl', [
     ctrl.fileUploader = {}
 
     action 'index', () ->
-      ctrl.playlist = CountryPlayList.query()
       data = {
         "type": "map",
         "theme":"black",
@@ -27,7 +26,11 @@ app.controller 'CountryPlayListCtrl', [
         listeners: [
           "event": "clickMapObject",
           "method": ( event ) ->
-            console.log(event.mapObject.title)
+            #console.log(event.mapObject.title) - просто проверка
+
+            #Возвращает массив записей по полю Страна, год 
+            ctrl.playlist = CountryPlayList.query({country: event.mapObject.title, year: $scope.year})
+            console.log ctrl.playlist            
             $scope.$apply () ->
               $scope.selectCont = event.mapObject.title
               $scope.selectIs = true
@@ -35,9 +38,9 @@ app.controller 'CountryPlayListCtrl', [
       }
 
       map = AmCharts.makeChart("map", data)
-      ctrl.playlist = CountryPlayList.query()
 
-
+      $scope.year = 2017
+      
       $scope.submit = ()->
         if ($scope.form.file.$valid && $scope.file) 
           $scope.upload($scope.file);
@@ -48,6 +51,6 @@ app.controller 'CountryPlayListCtrl', [
             url: Routes.import_import_csvs_path()
             data: {file: file}
           ).then (res)->
-            console.log res
+            #console.log res
     return
 ]
