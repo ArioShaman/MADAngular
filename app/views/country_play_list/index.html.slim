@@ -3,7 +3,13 @@
     .cover
     .play-list 
       div ng-repeat="el in ctrl.playlist"
-        .track ng-bind="el.track.author"
+        .track
+          .cover
+            img src="{{el.track.cover}}"
+          .track-info
+            .track-name ng-bind="el.track.name | limitTo:34"
+            .author ng-bind="el.track.author"
+
     div
       /форма загрузки csv, кстати коменты в html не отрендарятся
       /=render "import_csvs/form"

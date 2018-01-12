@@ -13,16 +13,39 @@
       height: 200px
       width: 100%
       background-color: grey
+      img
+        height: 40px
+        width: 40px
     .play-list
       height: 400px
       width: 100%
       background-color: rgba(0,0,0,0.5)
       overflow-y: auto
+      overflow-x: hidden
       .track
-        height: 40px
-        width: 300px
-        border-bottom: 1px solid red
-        background-color: #E6E5E5
+        height: 50px
+        width: 280px
+        color: white
+        font-family: 'open-sans'
+        display: flex
+        flex-wrap: wrap
+        &:hover
+          background-color: rgba(0, 0, 0, 0.5)
+          cursor: pointer 
+        .cover
+          height: 40px
+          width: 40px
+          margin: 5px
+          background-color: grey
+        .track-info
+          width: 200px
+          margin-left: 10px
+          .track-name
+            font-size: 12px
+            word-wrap: normal
+          .author
+            font-size: 10px
+
 
   .map, #map
     order: 2

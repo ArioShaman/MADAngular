@@ -8,5 +8,6 @@ class Country < ApplicationRecord
     else
       nil
     end    
-  end   
+  end
+    
 end
