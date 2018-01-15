@@ -12,10 +12,12 @@
     .cover
       height: 200px
       width: 100%
-      background-color: grey
       img
-        height: 40px
-        width: 40px
+        height: 200px
+        width: 300px
+    .no-img
+      //background-color: image-url("no-img")  
+      background-color: url(<%= asset_path 'no-img' %>)
     .play-list
       height: 400px
       width: 100%
@@ -37,6 +39,9 @@
           width: 40px
           margin: 5px
           background-color: grey
+          img
+            height: 40px
+            width: 40px          
         .track-info
           width: 200px
           margin-left: 10px

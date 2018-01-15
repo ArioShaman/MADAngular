@@ -1,6 +1,7 @@
 .country-play-list
   .sidebar
-    .cover
+    .cover.no-img
+      /= image_tag 'no-img'
     .play-list 
       div ng-repeat="el in ctrl.playlist"
         .track
